@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 # Command aliases:
-alias l='cat'
 alias ld='ls --color=auto -la'
 alias lsblk='lsblk -p'
 alias grep='grep --color=auto'
@@ -16,8 +15,7 @@ alias r='rm -f'
 alias rd='rm -fr'
 alias cp='cp -r'
 alias clear='printf \\033[2J\\033[3J\\033[H'
-alias clean='sudo rm -fr /tmp/*'
-alias diskspace='duf /'
+alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias disk='ncdu /'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
@@ -181,15 +179,6 @@ if [ -f /usr/bin/starship ]; then
 else
 	echo Starship is not installed, starting install...
 	sudo pacman -S starship
-	clear
-fi
-
-# Auto install DUF when starts terminal:
-if [ -f /usr/bin/duf ]; then
-	echo DUF installed...
-else
-	echo DUF is not installed, starting install...
-	sudo pacman -S duf
 	clear
 fi
 
