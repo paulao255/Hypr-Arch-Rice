@@ -163,7 +163,7 @@ if ! [ -f /usr/bin/man ]; then
 	clear
 fi
 
-# Auto install or start starship when starts terminal:
+# Auto install Starship when starts terminal:
 if ! [ -f /usr/bin/starship ]; then
 	echo Starship is not installed, starting install...
 	sudo pacman -S starship
@@ -219,9 +219,9 @@ if ! [ -f /usr/bin/sl ]; then
 	clear
 fi
 
-# Auto install ShowMeTheKey when starts terminal:
+# Auto install Show Me The Key when starts terminal:
 if ! [ -f /usr/bin/showmethekey-gtk ]; then
-	echo ShowMeTheKey is not installed, starting install...
+	echo Show Me The Key is not installed, starting install...
 	sudo pacman -S showmethekey
 	clear
 fi
