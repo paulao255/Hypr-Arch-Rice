@@ -1,2 +1,2 @@
-# Hypr-Arch-Rice.
-### A repository for my Hyprland + Arch Linux rice.
+# Hypr-Arch-Rice
+### A Hyprland + Hyprpanel + Kitty + swww rice.
