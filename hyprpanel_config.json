@@ -407,9 +407,10 @@
   "bar.customModules.cpu.icon": "",
   "bar.customModules.ram.leftClick": "kitty btop",
   "bar.customModules.cpu.leftClick": "kitty btop",
-  "bar.customModules.storage.leftClick": "kitty /home/paulo/diskspace.sh",
+  "bar.customModules.storage.leftClick": "kitty btop",
   "bar.customModules.storage.pollingInterval": 15000,
   "bar.customModules.worldclock.showIcon": true,
   "bar.clock.rightClick": "kitty weathera",
-  "bar.customModules.netstat.round": false
+  "bar.customModules.netstat.round": false,
+  "bar.customModules.updates.leftClick": "kitty sudo pacman -Syyu && kitty yay -Syyu && kitty flatpak update"
 }
