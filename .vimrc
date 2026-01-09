@@ -12,6 +12,11 @@ filetype plugin indent on
 
 " Try to enable truecolor.
 set termguicolors
+
+" Main theme.
+colorscheme gruvbox
+
+" Force background transparency.
 autocmd ColorScheme * hi Normal ctermbg=none guibg=none
 autocmd ColorScheme * hi NonText ctermbg=none guibg=none
 autocmd ColorScheme * hi NormalNC ctermbg=none guibg=none
