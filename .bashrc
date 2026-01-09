@@ -19,8 +19,8 @@ alias disk='ncdu /'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
 alias pacman='pacman --needed'
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
 
@@ -350,9 +350,16 @@ if ! [ -f /usr/bin/btop ]; then
 	clear
 fi
 
-# Auto install Neovim when starts terminal:
+# Auto install ViM when starts terminal:
+if ! [ -f /usr/bin/vim ]; then
+	echo ViM is not installed, starting install...
+	sudo pacman -S vim
+	clear
+fi
+
+# Auto install NeoViM when starts terminal:
 if ! [ -f /usr/bin/nvim ]; then
-	echo Neovim is not installed, starting install...
+	echo NeoViM is not installed, starting install...
 	sudo pacman -S neovim
 	clear
 fi
