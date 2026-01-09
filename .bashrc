@@ -19,8 +19,8 @@ alias disk='ncdu /'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
 alias pacman='pacman --needed'
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
 
