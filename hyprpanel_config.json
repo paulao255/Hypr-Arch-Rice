@@ -353,7 +353,7 @@
   "menus.dashboard.powermenu.shutdown": "poweroff",
   "bar.customModules.ram.icon": "",
   "bar.customModules.ram.labelType": "percentage",
-  "bar.customModules.ram.round": true,
+  "bar.customModules.ram.round": false,
   "bar.customModules.storage.round": false,
   "theme.bar.buttons.modules.updates.enableBorder": true,
   "bar.customModules.updates.autoHide": true,
