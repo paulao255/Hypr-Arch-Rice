@@ -15,7 +15,6 @@ alias r='rm -fr'
 alias cp='cp -r'
 alias clear='printf \\033[2J\\033[3J\\033[H'
 alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
-alias disk='ncdu /'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
 alias pacman='pacman --needed'
@@ -368,6 +367,13 @@ fi
 if ! [ -f /usr/bin/yazi ]; then
 	echo Yazi is not installed, starting install...
 	sudo pacman -S yazi
+	clear
+fi
+
+# Auto install Ventoy when starts terminal:
+if ! [ -f /usr/bin/ventoy ]; then
+	echo Ventoy is not installed, starting install...
+	yay -S ventoy-bin
 	clear
 fi
 
