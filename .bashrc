@@ -349,13 +349,6 @@ if ! [ -f /usr/bin/btop ]; then
 	clear
 fi
 
-# Auto install ViM when starts terminal:
-if ! [ -f /usr/bin/vim ]; then
-	echo ViM is not installed, starting install...
-	sudo pacman -S vim
-	clear
-fi
-
 # Auto install NeoViM when starts terminal:
 if ! [ -f /usr/bin/nvim ]; then
 	echo NeoViM is not installed, starting install...
