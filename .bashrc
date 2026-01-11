@@ -143,6 +143,13 @@ if ! [ -f /usr/bin/cmake ]; then
 	clear
 fi
 
+# Auto install Make when starts terminal:
+if ! [ -f /usr/bin/make ]; then
+	echo Make is not installed, starting install
+	sudo pacman -S make
+	clear
+fi
+
 # Auto install Tree when starts terminal:
 if ! [ -f /usr/bin/tree ]; then
 	echo Tree is not installed, starting install...
