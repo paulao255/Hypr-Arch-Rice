@@ -6,13 +6,8 @@
 [[ $- != *i* ]] && return
 
 # Command aliases:
-alias ld='ls --color=auto -la'
-alias lsblk='lsblk -p'
+alias ls='ls --color=auto -la'
 alias grep='grep --color=auto'
-alias m='touch'
-alias md='mkdir -p'
-alias r='rm -fr'
-alias cp='cp -r'
 alias clear='printf \\033[2J\\033[3J\\033[H'
 alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias find='sudo find / -name'
@@ -140,6 +135,13 @@ PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m
 # PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
 # PS1='\n[\u@\h \W]$ ' # Arch Linux normal terminal config.
 # PS1='\n\033[32m\u@\h\033[m:\033[34m\w\033[m$ ' # Ubuntu type.
+
+# Auto install C Make when starts terminal:
+if ! [ -f /usr/bin/cmake ]; then
+	echo C Make is not installed, starting install...
+	sudo pacman -S cmake
+	clear
+fi
 
 # Auto install Tree when starts terminal:
 if ! [ -f /usr/bin/tree ]; then
