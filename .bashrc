@@ -145,7 +145,7 @@ fi
 
 # Auto install Make when starts terminal:
 if ! [ -f /usr/bin/make ]; then
-	echo Make is not installed, starting install
+	echo Make is not installed, starting install...
 	sudo pacman -S make
 	clear
 fi
