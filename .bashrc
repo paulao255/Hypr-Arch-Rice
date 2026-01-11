@@ -370,6 +370,13 @@ if ! [ -f /usr/bin/ventoy ]; then
 	clear
 fi
 
+# Auto install W Get when starts terminal:
+if ! [ -f /usr/bin/wget ]; then
+	echo W Get is not installed, starting install...
+	sudo pacman -S wget
+	clear
+fi
+
 # Clear terminal after verifications and fast fetch:
 clear
 fastfetch
