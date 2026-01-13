@@ -13,10 +13,13 @@ alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
 alias pacman='pacman --needed'
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="code"
+export VISUAL="code"
+# export EDITOR="nvim"
+# export VISUAL="nvim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
+export QT_QPA_PLATFORM=wayland
 
 # Git Status Functions:
 git_status_1()
@@ -135,6 +138,13 @@ PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m
 # PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
 # PS1='\n[\u@\h \W]$ ' # Arch Linux normal terminal config.
 # PS1='\n\033[32m\u@\h\033[m:\033[34m\w\033[m$ ' # Ubuntu type.
+
+# Auto install Bash Completion when starts terminal:
+if ! [ -f /usr/share/bash-completion/bash_completion ]; then
+	echo Bash Completion is not installed, starting install...
+	sudo pacman -S bash-completion
+	clear
+fi
 
 # Auto install C Make when starts terminal:
 if ! [ -f /usr/bin/cmake ]; then
@@ -358,6 +368,13 @@ if ! [ -f /usr/bin/btop ]; then
 	clear
 fi
 
+# Auto install Visual Studio Code when starts terminal:
+if ! [ -f /usr/bin/code ]; then
+	echo Visual Studio Code is not installed, starting install...
+	yay -S visual-studio-code-bin
+	clear
+fi
+
 # Auto install NeoViM when starts terminal:
 if ! [ -f /usr/bin/nvim ]; then
 	echo NeoViM is not installed, starting install...
@@ -386,6 +403,10 @@ if ! [ -f /usr/bin/wget ]; then
 	clear
 fi
 
-# Clear terminal after verifications and fast fetch:
+# Clear terminal after verifications set up bash completions and fast fetch:
+if [ -r /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+fi
+
 clear
 fastfetch
