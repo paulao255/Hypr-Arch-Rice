@@ -19,7 +19,7 @@ export VISUAL="code"
 # export VISUAL="nvim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
-export QT_QPA_PLATFORM=wayland
+# export QT_QPA_PLATFORM=wayland
 
 # Git Status Functions:
 git_status_1()
@@ -126,7 +126,7 @@ git_status_2()
 
 # Terminals:
 # PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]$(git_status_1)─\033[36m $(date +"%H:%M:%S")\033[m\033[32m\n\033[32m└─\033[34m$\033[m ' # Kali type 1.
-PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}$(git_status_2)\n\033[32m└─\033[34m$\033[m ' # Kali type 2.
+# PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}$(git_status_2)\n\033[32m└─\033[34m$\033[m ' # Kali type 2.
 # PS1='\n' # Minimalist 1 type 1.
 # PS1='\n> ' # Minimalist 2 type 1.
 # PS1='\n\033[34m>\033[m ' # Minimalist 2 type 2.
@@ -135,7 +135,7 @@ PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m
 # PS1='\n$ ' # Minimalist 3 type 1.
 # PS1='\n\033[34m$\033[m ' # Minimalist 3 type 2.
 # PS1='\n\033[31m$\033[m ' # Minimalist 3 type 3.
-# PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
+PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
 # PS1='\n[\u@\h \W]$ ' # Arch Linux normal terminal config.
 # PS1='\n\033[32m\u@\h\033[m:\033[34m\w\033[m$ ' # Ubuntu type.
 
@@ -408,5 +408,6 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
 fi
 
+cd ~
 clear
 fastfetch
