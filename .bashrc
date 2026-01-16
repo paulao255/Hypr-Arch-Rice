@@ -247,7 +247,7 @@ fi
 # Auto install Yet Another Yourgut when starts terminal:
 if ! [ -f /usr/bin/yay ]; then
 	echo Yet Another Yourgut is not installed, starting install...
-	sudo pacman -S --needed base-devel git
+	sudo pacman -S --needed base-devel git go
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -si
@@ -408,6 +408,6 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
 fi
 
-cd ~
+cd
 clear
 fastfetch
