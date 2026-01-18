@@ -14,7 +14,6 @@ alias cls='printf \\033[2J\\033[3J\\033[H'
 alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
-alias pacman='pacman --needed'
 export EDITOR="code"
 export VISUAL="code"
 # export EDITOR="nvim"
@@ -23,49 +22,8 @@ export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
 export QT_QPA_PLATFORM=wayland
 
-# Git status function:
-git_status()
-{
-	git rev-parse --is-inside-work-tree &>/dev/null || return
-
-	local branch=$(git branch --show-current 2>/dev/null)
-	[ -z "$branch" ] && return
-
-	local out=" ${branch} "
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'deleted:'; then
-		out="${out}✘"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'modified:' | grep -q 'git add'; then
-		out="${out}!"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Changes to be committed:'; then
-		out="${out}+"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Untracked files:'; then
-		out="${out}?"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'ahead'; then
-		out="${out}⇡"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'behind'; then
-		out="${out}⇣"
-	fi
-
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'working tree clean'; then
-		out=" ${branch}"
-	fi
-
-	echo -e "─\\033[33m$out\\033[m\\033[32m"
-}
-
 # Terminals:
-PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}$(git_status)\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock + Git.
+PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}\n└─\033[34m$\033[m ' # Kali type + Clock.
 # PS1='\n' # Minimalist 1 type 1.
 # PS1='\n> ' # Minimalist 2 type 1.
 # PS1='\n\033[34m>\033[m ' # Minimalist 2 type 2.
@@ -85,6 +43,13 @@ if ! [ -f /usr/share/bash-completion/bash_completion ]; then
 	clear
 fi
 
+# Auto install GNU C Compiler when starts terminal:
+if ! [ -f /usr/bin/gcc ]; then
+	echo GNU C Compiler is not installed, starting install...
+	sudo pacman -S gcc
+	clear
+fi
+
 # Auto install C Make when starts terminal:
 if ! [ -f /usr/bin/cmake ]; then
 	echo C Make is not installed, starting install...
@@ -92,10 +57,10 @@ if ! [ -f /usr/bin/cmake ]; then
 	clear
 fi
 
-# Auto install Make when starts terminal:
-if ! [ -f /usr/bin/make ]; then
+# Auto install Ninja when starts terminal:
+if ! [ -f /usr/bin/ninja ]; then
 	echo Make is not installed, starting install...
-	sudo pacman -S make
+	sudo pacman -S ninja
 	clear
 fi
 
