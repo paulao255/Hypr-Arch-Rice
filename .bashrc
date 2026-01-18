@@ -7,8 +7,10 @@
 
 # Command aliases:
 alias ls='ls --color=auto -la'
+alias dir='dir --color=auto -la'
 alias grep='grep --color=auto'
 alias clear='printf \\033[2J\\033[3J\\033[H'
+alias cls='printf \\033[2J\\033[3J\\033[H'
 alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
@@ -19,10 +21,10 @@ export VISUAL="code"
 # export VISUAL="nvim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
-# export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=wayland
 
-# Git Status Functions:
-git_status_1()
+# Git status function:
+git_status()
 {
 	git rev-parse --is-inside-work-tree &>/dev/null || return
 
@@ -30,31 +32,30 @@ git_status_1()
 	[ -z "$branch" ] && return
 
 	local out=" ${branch} "
-	local status=$(git status --porcelain=v2 --branch 2>/dev/null)
 	local dirty=0
 
-	if echo "$status" | grep -q '^1 .D'; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'deleted:'; then
 		out="${out}✘"
 		dirty=1
 	fi
 
-	if echo "$status" | grep -q '^1 .M'; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'modified:'; then
 		out="${out}!"
 		dirty=1
 	fi
 
-	if echo "$status" | grep -q '^1 [^.]'; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Changes to be committed:'; then
 		out="${out}+"
 		dirty=1
 	fi
 
-	if echo "$status" | grep -q '^? '; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Untracked files:'; then
 		out="${out}?"
 		dirty=1
 	fi
 
-	local ahead=$(echo "$status" | grep '^# branch.ab' | awk '{print $3}' | sed 's/^+//')
-	local behind=$(echo "$status" | grep '^# branch.ab' | awk '{print $4}' | sed 's/^-//')
+	local ahead=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $3}' | sed 's/^+//')
+	local behind=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $4}' | sed 's/^-//')
 
 	if [[ -n "$ahead" && "$ahead" -gt 0 ]]; then
 		out="${out}⇡"
@@ -69,64 +70,11 @@ git_status_1()
 	if [ "$dirty" -eq 0 ]; then
 		out=" ${branch}"
 	fi
-
-	echo -e "─{\\033[33m$out\\033[m\\033[32m}"
-}
-
-git_status_2()
-{
-	git rev-parse --is-inside-work-tree &>/dev/null || return
-
-	local branch=$(git branch --show-current 2>/dev/null)
-	[ -z "$branch" ] && return
-
-	local out=" ${branch} "
-	local status=$(git status --porcelain=v2 --branch 2>/dev/null)
-	local dirty=0
-
-	if echo "$status" | grep -q '^1 .D'; then
-		out="${out}✘"
-		dirty=1
-	fi
-
-	if echo "$status" | grep -q '^1 .M'; then
-		out="${out}!"
-		dirty=1
-	fi
-
-	if echo "$status" | grep -q '^1 [^.]'; then
-		out="${out}+"
-		dirty=1
-	fi
-
-	if echo "$status" | grep -q '^? '; then
-		out="${out}?"
-		dirty=1
-	fi
-
-	local ahead=$(echo "$status" | grep '^# branch.ab' | awk '{print $3}' | sed 's/^+//')
-	local behind=$(echo "$status" | grep '^# branch.ab' | awk '{print $4}' | sed 's/^-//')
-
-	if [[ -n "$ahead" && "$ahead" -gt 0 ]]; then
-		out="${out}⇡"
-		dirty=1
-	fi
-
-	if [[ -n "$behind" && "$behind" -gt 0 ]]; then
-		out="${out}⇣"
-		dirty=1
-	fi
-
-	if [ "$dirty" -eq 0 ]; then
-		out=" ${branch}"
-	fi
-
 	echo -e "─\\033[33m$out\\033[m\\033[32m"
 }
 
 # Terminals:
-# PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]$(git_status_1)─\033[36m $(date +"%H:%M:%S")\033[m\033[32m\n\033[32m└─\033[34m$\033[m ' # Kali type 1.
-# PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}$(git_status_2)\n\033[32m└─\033[34m$\033[m ' # Kali type 2.
+PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}$(git_status)\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock + Git.
 # PS1='\n' # Minimalist 1 type 1.
 # PS1='\n> ' # Minimalist 2 type 1.
 # PS1='\n\033[34m>\033[m ' # Minimalist 2 type 2.
@@ -135,7 +83,7 @@ git_status_2()
 # PS1='\n$ ' # Minimalist 3 type 1.
 # PS1='\n\033[34m$\033[m ' # Minimalist 3 type 2.
 # PS1='\n\033[31m$\033[m ' # Minimalist 3 type 3.
-PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
+# PS1='\n\033[32m$\033[m ' # Minimalist 3 type 4.
 # PS1='\n[\u@\h \W]$ ' # Arch Linux normal terminal config.
 # PS1='\n\033[32m\u@\h\033[m:\033[34m\w\033[m$ ' # Ubuntu type.
 
@@ -247,7 +195,7 @@ fi
 # Auto install Yet Another Yourgut when starts terminal:
 if ! [ -f /usr/bin/yay ]; then
 	echo Yet Another Yourgut is not installed, starting install...
-	sudo pacman -S --needed base-devel git go
+	sudo pacman -S --needed base-devel git
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -si
@@ -408,6 +356,6 @@ if [ -r /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
 fi
 
-cd
+cd ~
 clear
 fastfetch
