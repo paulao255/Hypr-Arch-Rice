@@ -32,46 +32,35 @@ git_status()
 	[ -z "$branch" ] && return
 
 	local out=" ${branch} "
-	local dirty=0
 
 	if echo "$(git status --branch 2>/dev/null)" | grep -q 'deleted:'; then
 		out="${out}✘"
-		dirty=1
 	fi
 
 	if echo "$(git status --branch 2>/dev/null)" | grep -q 'modified:' | grep -q 'git add'; then
 		out="${out}!"
-		dirty=1
 	fi
 
 	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Changes to be committed:'; then
 		out="${out}+"
-		dirty=1
 	fi
 
 	if echo "$(git status --branch 2>/dev/null)" | grep -q 'Untracked files:'; then
 		out="${out}?"
-		dirty=1
 	fi
 
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'git push'; then
-
-	local ahead=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $3}' | sed 's/^+//')
-	local behind=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $4}' | sed 's/^-//')
-
-	if [[ -n "$ahead" && "$ahead" -gt 0 ]]; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'ahead'; then
 		out="${out}⇡"
-		dirty=1
 	fi
 
-	if [[ -n "$behind" && "$behind" -gt 0 ]]; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'behind'; then
 		out="${out}⇣"
-		dirty=1
 	fi
 
-	if [ "$dirty" -eq 0 ]; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'working tree clean'; then
 		out=" ${branch}"
 	fi
+
 	echo -e "─\\033[33m$out\\033[m\\033[32m"
 }
 
