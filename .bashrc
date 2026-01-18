@@ -39,7 +39,7 @@ git_status()
 		dirty=1
 	fi
 
-	if echo "$(git status --branch 2>/dev/null)" | grep -q 'modified:'; then
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'modified:' | grep -q 'git add'; then
 		out="${out}!"
 		dirty=1
 	fi
@@ -53,6 +53,8 @@ git_status()
 		out="${out}?"
 		dirty=1
 	fi
+
+	if echo "$(git status --branch 2>/dev/null)" | grep -q 'git push'; then
 
 	local ahead=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $3}' | sed 's/^+//')
 	local behind=$(echo "$(git status --porcelain=v2 --branch 2>/dev/null)" | grep '^# branch.ab' | awk '{print $4}' | sed 's/^-//')
