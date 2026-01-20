@@ -210,7 +210,7 @@
   "theme.bar.enableShadow": false,
   "theme.bar.layer": "top",
   "theme.bar.buttons.separator.margins": "0.15em",
-  "bar.launcher.autoDetectIcon": true,
+  "bar.launcher.autoDetectIcon": false,
   "theme.bar.buttons.dashboard.enableBorder": true,
   "theme.bar.buttons.workspaces.enableBorder": true,
   "bar.workspaces.show_icons": false,
@@ -315,7 +315,7 @@
   "theme.bar.buttons.spacing": "0.13em",
   "theme.bar.outer_spacing": "0.0em",
   "theme.bar.border_radius": "0.0em",
-  "theme.bar.buttons.y_margins": "0.0em",
+  "theme.bar.buttons.y_margins": "0.1em",
   "theme.bar.buttons.padding_x": "0.4rem",
   "theme.bar.buttons.padding_y": "0.0rem",
   "theme.bar.buttons.innerRadiusMultiplier": "0.0",
@@ -360,7 +360,7 @@
   "bar.customModules.updates.extendedTooltip": true,
   "bar.customModules.weather.unit": "metric",
   "bar.customModules.hyprsunset.temperature": "1000k",
-  "theme.bar.buttons.borderSize": "0.02em",
+  "theme.bar.buttons.borderSize": "0.03em",
   "menus.media.displayTime": true,
   "theme.font.name": "Ubuntu Nerd Font",
   "theme.font.label": "JetBrainsMono Nerd Font",
@@ -412,5 +412,6 @@
   "bar.customModules.worldclock.showIcon": true,
   "bar.clock.rightClick": "kitty weathera",
   "bar.customModules.netstat.round": false,
-  "bar.customModules.updates.leftClick": "kitty sudo pacman -Syyu && kitty yay -Syyu && kitty flatpak update"
+  "bar.customModules.updates.leftClick": "kitty sudo pacman -Syyu && kitty yay -Syyu && kitty flatpak update",
+  "bar.launcher.icon": "󰣇"
 }
