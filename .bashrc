@@ -23,7 +23,7 @@ export GPG_TTY=$(tty)
 export QT_QPA_PLATFORM=wayland
 
 # Terminals:
-PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S")\033[m\033[32m}\n└─\033[34m$\033[m ' # Kali type + Clock.
+PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%H:%M:%S | %Y/%m/%d")\033[m\033[32m}\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock.
 # PS1='\n' # Minimalist 1 type 1.
 # PS1='\n> ' # Minimalist 2 type 1.
 # PS1='\n\033[34m>\033[m ' # Minimalist 2 type 2.
