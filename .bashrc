@@ -273,9 +273,9 @@ if ! [ -f /usr/bin/btop ]; then
 fi
 
 # Auto install Visual Studio Code when starts terminal:
-if ! [ -f /usr/bin/code ]; then
+if ! [ -f /usr/bin/visual-studio-code-electron ]; then
 	echo Visual Studio Code is not installed, starting install...
-	yay -S visual-studio-code-bin
+	yay -S visual-studio-code-electron-bin
 	clear
 fi
 
