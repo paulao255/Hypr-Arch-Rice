@@ -36,6 +36,13 @@ PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m
 # PS1='\n[\u@\h \W]$ ' # Arch Linux normal terminal config.
 # PS1='\n\033[32m\u@\h\033[m:\033[34m\w\033[m$ ' # Ubuntu type.
 
+# Auto install Wev when starts terminal:
+if ! [ -f /usr/bin/wev ]; then
+	echo Wev is not installed, starting install...
+	sudo pacman -S wev
+	clear
+fi
+
 # Auto install Bash Completion when starts terminal:
 if ! [ -f /usr/share/bash-completion/bash_completion ]; then
 	echo Bash Completion is not installed, starting install...
