@@ -251,7 +251,7 @@ if ! [ -f /usr/bin/gh ]; then
 	clear
 fi
 
-# Auto install flatpak when starts terminal:
+# Auto install Flatpak when starts terminal:
 if ! [ -f /usr/bin/flatpak ]; then
 	echo Flatpak is not installed, starting install...
 	sudo pacman -S flatpak
@@ -280,13 +280,13 @@ if ! [ -f /usr/bin/btop ]; then
 fi
 
 # Auto install Visual Studio Code when starts terminal:
-if ! [ -f /usr/bin/visual-studio-code-electron ]; then
+if ! [ -f /usr/bin/code ]; then
 	echo Visual Studio Code is not installed, starting install...
-	yay -S visual-studio-code-electron-bin
+	yay -S visual-studio-code-bin
 	clear
 fi
 
-# Auto install NeoViM when starts terminal:
+# Auto install NeoVim when starts terminal:
 if ! [ -f /usr/bin/nvim ]; then
 	echo NeoViM is not installed, starting install...
 	sudo pacman -S neovim
