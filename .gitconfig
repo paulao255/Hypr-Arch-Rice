@@ -8,3 +8,6 @@
 	helper = !/usr/bin/gh auth git-credential
 [commit]
 	gpgsign = true
+[user]
+	email = contactpaulao@gmail.com
+	name = paulao255
