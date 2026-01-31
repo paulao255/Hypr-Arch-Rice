@@ -43,7 +43,8 @@
             "focused": "",
 	    "active": "",
             "default": ""
-        }
+        },
+	"tooltip": false,
     },
     "keyboard-state": {
         "numlock": true,
@@ -55,7 +56,8 @@
         }
     },
     "hyprland/language": {
-        "format": "{}"
+        "format": "{}",
+	"tooltip": false
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -103,6 +105,7 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 10,
+        "tooltip": false
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -136,13 +139,15 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""],
 	"interval": 2,
-	"on-click": "$TERM btop"
+	"on-click": "$TERM btop",
+        "tooltip": false
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-	"interval": 2
+	"interval": 2,
+        "tooltip": false
     },
     "battery": {
         "states": {
@@ -157,7 +162,8 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "tooltip": false
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -165,7 +171,7 @@
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
+      "tooltip": false,
       "format-icons": {
         "default": "",
         "performance": "",
@@ -180,7 +186,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip": false
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -199,7 +206,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "tooltip": false
     },
     "custom/media": {
         "format": "{icon} {text}",
@@ -217,18 +225,20 @@
         "format": " ⏻ ",
 	"on-click": "poweroff",
 	"on-click-right": "pkill waybar",
-	"tooltip": true
+	"tooltip": false
     },
     "disk": {
         "format": "{used}/{total} ",
 	"path": "/home",
 	"on-click": "$TERM btop",
-	"on-click-right": "$TERM ncdu /"
+	"on-click-right": "$TERM ncdu /",
+        "tooltip": false
     },
     "hyprland/window": {
         "format": "{}",
 	"rewrite": {
             "^$": "None"
-	}
+	},
+        "tooltip": false
     }
 }
