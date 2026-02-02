@@ -10,27 +10,31 @@
         // "sway/workspaces",
         // "sway/mode",
         // "sway/scratchpad",
-        "custom/power",
+        "user",
 	"hyprland/workspaces",
 	"pulseaudio",
 	"network",
-	"battery",
-	"power-profiles-daemon",
+	// "battery",
+	// "power-profiles-daemon",
 	"tray"
     ],
     "modules-center": [
-        "hyprland/window"
+        // "hyprland/window"
+	"clock"
     ],
     "modules-right": [
         // "mpd",
         // "idle_inhibitor",
-        "cpu",
+	"power-profiles-daemon",
+	"battery",
+	"cpu",
         "memory",
         "temperature",
 	"disk",
+	"custom/power"
         // "backlight",
         // "hyprland/language",
-	"clock"
+	// "clock"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -44,7 +48,7 @@
 	    "active": "",
             "default": ""
         },
-	"tooltip": false,
+	"tooltip": false
     },
     "keyboard-state": {
         "numlock": true,
@@ -240,5 +244,12 @@
             "^$": "None"
 	},
         "tooltip": false
+    },
+    "user": {
+        "format": "󰣇 {user}",
+	"avatar": "$HOME/Pictures/Profile Photos/Grace Ashcroft.png",
+	"icon": true,
+	"width": 30,
+	"height": 30
     }
 }

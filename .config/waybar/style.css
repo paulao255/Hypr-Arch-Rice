@@ -8,6 +8,11 @@ window#waybar {
     background-color: rgba(255, 255, 255, 0);
 }
 
+#user {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0 3px;
+}
+
 #custom-power {
     background-color: rgba(255, 255, 255, 1);
 }
