@@ -1,7 +1,3 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -14,14 +10,13 @@ alias cls='printf \\033[2J\\033[3J\\033[H'
 alias clean='sudo rm -fr /tmp/* && sudo rm -fr ~/.cache/*'
 alias find='sudo find / -name'
 alias shred='shred -funz 5'
-export EDITOR="code"
-export VISUAL="code"
-# export EDITOR="nvim"
-# export VISUAL="nvim"
+export EDITOR="vim"
+export VISUAL="vim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
-export QT_QPA_PLATFORM=wayland
-export SDL_VIDEODRIVER=wayland
+export QT_QPA_PLATFORM=x11
+export GDK_BACKEND=x11
+export SDL_VIDEODRIVER=x11
 
 # Terminals:
 PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%Y-%m-%d | %H:%M:%S")\033[m\033[32m}\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock.
@@ -40,119 +35,126 @@ PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m
 # Auto install Wev when starts terminal:
 if ! [ -f /usr/bin/wev ]; then
 	echo Wev is not installed, starting install...
-	sudo pacman -S wev
+	sudo pacman -S --needed wev
 	clear
 fi
 
 # Auto install Bash Completion when starts terminal:
 if ! [ -f /usr/share/bash-completion/bash_completion ]; then
 	echo Bash Completion is not installed, starting install...
-	sudo pacman -S bash-completion
+	sudo pacman -S --needed bash-completion
 	clear
 fi
 
 # Auto install GNU C Compiler when starts terminal:
 if ! [ -f /usr/bin/gcc ]; then
 	echo GNU C Compiler is not installed, starting install...
-	sudo pacman -S gcc
+	sudo pacman -S --needed gcc
 	clear
 fi
 
-# Auto install C Make when starts terminal:
+# Auto install GNU Make when starts terminal:
+if ! [ -f /usr/bin/make ]; then
+	echo GNU Make is not installed, starting install...
+	sudo pacman -S --needed make
+	clear
+fi
+
+# Auto install CMake when starts terminal:
 if ! [ -f /usr/bin/cmake ]; then
 	echo C Make is not installed, starting install...
-	sudo pacman -S cmake
+	sudo pacman -S --needed cmake
 	clear
 fi
 
 # Auto install Ninja when starts terminal:
 if ! [ -f /usr/bin/ninja ]; then
 	echo Make is not installed, starting install...
-	sudo pacman -S ninja
+	sudo pacman -S --needed ninja
 	clear
 fi
 
 # Auto install Tree when starts terminal:
 if ! [ -f /usr/bin/tree ]; then
 	echo Tree is not installed, starting install...
-	sudo pacman -S tree
+	sudo pacman -S --needed tree
 	clear
 fi
 
 # Auto install Less when starts terminal:
 if ! [ -f /usr/bin/less ]; then
 	echo Less is not installed, starting install...
-	sudo pacman -S less
+	sudo pacman -S --needed less
 	clear
 fi
 
 # Auto install Man when starts terminal:
 if ! [ -f /usr/bin/man ]; then
 	echo Man is not installed, starting install...
-	sudo pacman -S man
+	sudo pacman -S --needed man
 	clear
 fi
 
 # Auto install Starship when starts terminal:
 if ! [ -f /usr/bin/starship ]; then
 	echo Starship is not installed, starting install...
-	sudo pacman -S starship
+	sudo pacman -S --needed starship
 	clear
 fi
 
 # Auto install NCDU when starts terminal:
 if ! [ -f /usr/bin/ncdu ]; then
 	echo NCDU is not installed, starting install...
-	sudo pacman -S ncdu
+	sudo pacman -S --needed ncdu
 	clear
 fi
 
 # Auto install XDG User Dirs when starts terminal:
 if ! [ -f /usr/bin/xdg-user-dirs-update ]; then
 	echo XDG User Dirs is not installed, starting install...
-	sudo pacman -S xdg-user-dirs
+	sudo pacman -S --needed xdg-user-dirs
 	clear
 fi
 
 # Auto install Fast Fetch when starts terminal:
 if ! [ -f /usr/bin/fastfetch ]; then
 	echo Fastfetch is not installed, starting install...
-	sudo pacman -S fastfetch
+	sudo pacman -S --needed fastfetch
 	clear
 fi
 
 # Auto install GNU PG when starts terminal:
 if ! [ -f /usr/bin/gpg ]; then
 	echo GNU PG is not installed, starting install...
-	sudo pacman -S gnupg
+	sudo pacman -S --needed gnupg
 	clear
 fi
 
 # Auto install AGE when starts terminal:
 if ! [ -f /usr/bin/age ]; then
 	echo AGE is not installed, starting install...
-	sudo pacman -S age
+	sudo pacman -S --needed age
 	clear
 fi
 
 # Auto install Open SSH when starts terminal:
 if ! [ -f /usr/bin/ssh ]; then
 	echo Open SSH is not installed, starting install...
-	sudo pacman -S openssh
+	sudo pacman -S --needed openssh
 	clear
 fi
 
 # Auto install SL when starts terminal:
 if ! [ -f /usr/bin/sl ]; then
 	echo SL is not installed, starting install...
-	sudo pacman -S sl
+	sudo pacman -S --needed sl
 	clear
 fi
 
 # Auto install Show Me The Key when starts terminal:
 if ! [ -f /usr/bin/showmethekey-gtk ]; then
 	echo Show Me The Key is not installed, starting install...
-	sudo pacman -S showmethekey
+	sudo pacman -S --needed showmethekey
 	clear
 fi
 
@@ -171,147 +173,152 @@ fi
 # Auto install Ascii when starts terminal:
 if ! [ -f /usr/bin/ascii ]; then
 	echo Ascii is not installed, starting install...
-	sudo pacman -S ascii
+	sudo pacman -S --needed ascii
 	clear
 fi
 
 # Auto install Figlet when starts terminal:
 if ! [ -f /usr/bin/figlet ]; then
 	echo Figlet is not installed, starting install...
-	sudo pacman -S figlet
+	sudo pacman -S --needed figlet
 	clear
 fi
 
 # Auto install Cow Say when starts terminal:
 if ! [ -f /usr/bin/cowsay ]; then
 	echo Cow Say is not installed, starting install...
-	sudo pacman -S cowsay
+	sudo pacman -S --needed cowsay
 	clear
 fi
 
 # Auto install Toilet when starts terminal:
 if ! [ -f /usr/bin/toilet ]; then
 	echo Toilet is not installed, starting install...
-	sudo pacman -S toilet
+	sudo pacman -S --needed toilet
 	clear
 fi
 
 # Auto install CMatrix when starts terminal:
 if ! [ -f /usr/bin/cmatrix ]; then
 	echo CMatrix is not installed, starting install...
-	sudo pacman -S cmatrix
+	sudo pacman -S --needed cmatrix
 	clear
 fi
 
 # Auto install AsciiQuarium when starts terminal:
 if ! [ -f /usr/bin/asciiquarium ]; then
 	echo Asciiquarium is not installed, starting install...
-	sudo pacman -S asciiquarium
+	sudo pacman -S --needed asciiquarium
 	clear
 fi
 
 # Auto install N Snake when starts terminal:
 if ! [ -f /usr/bin/nsnake ]; then
 	echo N Snake is not installed, starting install...
-	yay -S nsnake
+	yay -S --needed nsnake
 	clear
 fi
 
 # Auto install Vi Tetris when starts terminal:
 if ! [ -f /usr/bin/vitetris ]; then
 	echo Vi Tetris is not installed, starting install...
-	yay -S vitetris
+	yay -S --needed vitetris
 	clear
 fi
 
 # Auto install Bastet when starts terminal:
 if ! [ -f /usr/bin/bastet ]; then
 	echo Bastet is not installed, starting install...
-	yay -S bastet
+	yay -S --needed bastet
 	clear
 fi
 
 # Auto install GNU Chess when starts terminal:
 if ! [ -f /usr/bin/gnuchess ]; then
 	echo GNU Chess is not installed, starting install...
-	sudo pacman -S gnuchess
+	sudo pacman -S --needed gnuchess
 	clear
 fi
 
 # Auto install Git when starts terminal:
 if ! [ -f /usr/bin/git ]; then
 	echo Git is not installed, starting install...
-	sudo pacman -S git
+	sudo pacman -S --needed git
 	clear
 fi
 
 # Auto install Github CLI when starts terminal:
 if ! [ -f /usr/bin/gh ]; then
 	echo Github CLI is not installed, starting install...
-	sudo pacman -S github-cli
+	sudo pacman -S --needed github-cli
 	clear
 fi
 
 # Auto install Flatpak when starts terminal:
 if ! [ -f /usr/bin/flatpak ]; then
 	echo Flatpak is not installed, starting install...
-	sudo pacman -S flatpak
+	sudo pacman -S --needed flatpak
 	clear
 fi
 
 # Auto install Top when starts terminal:
 if ! [ -f /usr/bin/top ]; then
 	echo Top is not installed, starting install...
-	sudo pacman -S top
+	sudo pacman -S --needed top
 	clear
 fi
 
 # Auto install H Top when starts terminal:
 if ! [ -f /usr/bin/htop ]; then
 	echo H Top is not installed, starting install...
-	sudo pacman -S htop
+	sudo pacman -S --needed htop
 	clear
 fi
 
 # Auto install B Top when starts terminal:
 if ! [ -f /usr/bin/btop ]; then
 	echo B Top is not installed, starting install...
-	sudo pacman -S btop
+	sudo pacman -S --needed btop
 	clear
 fi
 
-# Auto install Visual Studio Code when starts terminal:
-if ! [ -f /usr/bin/code ]; then
-	echo Visual Studio Code is not installed, starting install...
-	yay -S visual-studio-code-bin
-	clear
-fi
-
-# Auto install NeoVim when starts terminal:
-if ! [ -f /usr/bin/nvim ]; then
-	echo NeoViM is not installed, starting install...
-	sudo pacman -S neovim
+# Auto install VIM when starts terminal:
+if ! [ -f /usr/bin/vim ]; then
+	echo VIM is not installed, starting install...
+	sudo pacman -S --needed vim
 	clear
 fi
 
 # Auto install Yazi when starts terminal:
 if ! [ -f /usr/bin/yazi ]; then
 	echo Yazi is not installed, starting install...
-	sudo pacman -S yazi
+	sudo pacman -S --needed yazi
 	clear
 fi
 
 # Auto install Ventoy when starts terminal:
 if ! [ -f /usr/bin/ventoy ]; then
 	echo Ventoy is not installed, starting install...
-	yay -S ventoy-bin
+	yay -S --needed ventoy-bin
 	clear
 fi
 
 # Auto install W Get when starts terminal:
 if ! [ -f /usr/bin/wget ]; then
 	echo W Get is not installed, starting install...
-	sudo pacman -S wget
+	sudo pacman -S --needed wget
+	clear
+fi
+
+if ! [ -f /usr/bin/lua ]; then
+	echo Lua is not installed, starting install...
+	sudo pacman -S --needed lua
+	clear
+fi
+
+if ! [ -f /usr/bin/luau ]; then
+	echo Luau is not installed, starting install...
+	sudo pacman -S --needed luau
 	clear
 fi
 
