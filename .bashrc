@@ -14,9 +14,9 @@ export EDITOR="vim"
 export VISUAL="vim"
 export FILE_MANAGER="yazi"
 export GPG_TTY=$(tty)
-export QT_QPA_PLATFORM=x11
-export GDK_BACKEND=x11
-export SDL_VIDEODRIVER=x11
+export QT_QPA_PLATFORM=wayland
+export GDK_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
 
 # Terminals:
 PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%Y-%m-%d | %H:%M:%S")\033[m\033[32m}\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock.
