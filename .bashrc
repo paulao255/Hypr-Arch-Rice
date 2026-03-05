@@ -310,15 +310,24 @@ if ! [ -f /usr/bin/wget ]; then
 	clear
 fi
 
+# Auto install Lua when starts terminal:
 if ! [ -f /usr/bin/lua ]; then
 	echo Lua is not installed, starting install...
 	sudo pacman -S --needed lua
 	clear
 fi
 
+# Auto install Luau when starts terminal:
 if ! [ -f /usr/bin/luau ]; then
 	echo Luau is not installed, starting install...
 	sudo pacman -S --needed luau
+	clear
+fi
+
+# Auto install Zip when starts terminal:
+if ! [ -f /usr/bin/zip ]; then
+	echo Zip is not installed, starting install...
+	sudo pacman -S --needed zip
 	clear
 fi
 
