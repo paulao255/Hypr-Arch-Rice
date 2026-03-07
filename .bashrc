@@ -331,6 +331,13 @@ if ! [ -f /usr/bin/zip ]; then
 	clear
 fi
 
+# Auto install UnZip when starts terminal:
+if ! [ -f /usr/bin/unzip ]; then
+	echo UnZip is not installed, starting install...
+	sudo pacman -S --needed unzip
+	clear
+fi
+
 # Clear terminal after verifications set up bash completions and fast fetch:
 if [ -r /usr/share/bash-completion/bash_completion ]; then
 	. /usr/share/bash-completion/bash_completion
