@@ -181,7 +181,9 @@
         "performance": "",
         "balanced": "",
         "power-saver": ""
-      }
+      },
+      "on-click": "powerprofilesctl set performance",
+      "on-click-right": "powerprofilesctl set power-saver"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
