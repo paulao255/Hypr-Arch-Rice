@@ -7,6 +7,14 @@ set tabstop=8
 set shiftwidth=8
 set softtabstop=8
 
+" Plugins.
+call plug#begin()
+
+Plug 'neoclide/coc.nvim', {'branch' : 'release'}
+Plug 'morhetz/gruvbox', {'branch' : 'master'}
+
+call plug#end()
+
 " Visual.
 syntax on
 filetype plugin indent on
@@ -14,12 +22,8 @@ filetype plugin indent on
 set nowrap
 set nonumber
 
-" Plugins.
-call plug#begin()
-
-Plug 'neoclide/coc.nvim', {'branch' : 'release'}
-
-call plug#end()
+set termguicolors
+colorscheme delek
 
 " Coc config.
 let g:coc_global_extensions = ['coc-clangd', 'coc-java', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pyright', 'coc-omnisharp', 'coc-lua']
@@ -33,13 +37,13 @@ let g:coc_enable_auto_complete = 0
 
 " Clangd.
 function! ApplyClangd(std)
-	let g:coc_clangd_args = ['--std=' . a:std, '--header-insertion=never']
+	let g:coc_clangd_args = ['-std=' . a:std, '--header-insertion=never', '-Wall', '-Wextra', '-Wpedantic']
 	silent! CocRestart
 endfunction
 
 function! AutoClangd()
 	if expand('%:e') ==# 'c' || expand('%:e') ==# 'h'
-		call ApplyClangd('c89')
+		call ApplyClangd('c90')
 	elseif expand('%:e') ==# 'cpp' || expand('%:e') ==# 'hpp'
 		call ApplyClangd('c++98')
 	endif
