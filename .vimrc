@@ -21,17 +21,15 @@ filetype plugin indent on
 
 set nowrap
 set nonumber
-
 set termguicolors
 colorscheme delek
 
 " Coc config.
 let g:coc_global_extensions = ['coc-clangd', 'coc-java', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pyright', 'coc-omnisharp', 'coc-lua']
 
-" Remove automatic popup.
-set completeopt=menu,noinsert,noselect
+set completeopt=menu
 let g:coc_disable_startup_warning = 1
-let g:coc_enable_auto_complete = 0
+
 
 " ------------------ Functions ------------------
 
