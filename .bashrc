@@ -17,6 +17,7 @@ export GPG_TTY=$(tty)
 export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
+export GLFW_PLATFORM=wayland
 
 # Terminals:
 PS1='\n\033[32m┌──(\033[34m\u@\h\033[32m)─[\033[m\033[1m\w\033[m\033[32m]─{\033[36m $(date +"%Y-%m-%d | %H:%M:%S")\033[m\033[32m}\n\033[32m└─\033[34m$\033[m ' # Kali type + Clock.
@@ -328,13 +329,6 @@ fi
 if ! [ -f /usr/bin/zip ]; then
 	echo Zip is not installed, starting install...
 	sudo pacman -S --needed zip
-	clear
-fi
-
-# Auto install UnZip when starts terminal:
-if ! [ -f /usr/bin/unzip ]; then
-	echo UnZip is not installed, starting install...
-	sudo pacman -S --needed unzip
 	clear
 fi
 
