@@ -1,12 +1,3 @@
-" System clipboard.
-set clipboard=unnamedplus
-
-" Real tabs (8 chars).
-set noexpandtab
-set tabstop=8
-set shiftwidth=8
-set softtabstop=8
-
 " Plugins.
 call plug#begin()
 
@@ -15,14 +6,25 @@ Plug 'morhetz/gruvbox', {'branch' : 'master'}
 
 call plug#end()
 
+" System clipboard.
+set clipboard=unnamedplus
+
 " Visual.
 syntax on
 filetype plugin indent on
 
 set nowrap
-set nonumber
+set number
+set cursorline
 set termguicolors
-colorscheme delek
+colorscheme darkblue
+colorscheme gruvbox
+
+" Real tabs (8 chars).
+set noexpandtab
+set tabstop=8
+set shiftwidth=8
+set softtabstop=8
 
 " Coc config.
 let g:coc_global_extensions = ['coc-clangd', 'coc-java', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pyright', 'coc-omnisharp', 'coc-lua']
