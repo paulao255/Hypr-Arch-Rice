@@ -1,41 +1,53 @@
-" Plugins.
+" -------------------------------------
+" -------------- Plugins --------------
+" -------------------------------------
+
 call plug#begin()
 
-Plug 'neoclide/coc.nvim', {'branch' : 'release'}
-Plug 'morhetz/gruvbox', {'branch' : 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox', {'branch': 'master'}
+Plug 'Exafunction/codeium.vim' , {'branch': 'main'}
 
 call plug#end()
 
-" System clipboard.
-set clipboard=unnamedplus
+" -------------------------------------
+" ------------ Main config ------------
+" -------------------------------------
 
-" Visual.
 syntax on
+
 filetype plugin indent on
 
-set nowrap
-set number
-set cursorline
-set termguicolors
-colorscheme darkblue
-colorscheme gruvbox
-
-" Real tabs (8 chars).
 set noexpandtab
 set tabstop=8
 set shiftwidth=8
 set softtabstop=8
+set nowrap
+set number
+set cursorline
+set termguicolors
+set clipboard=unnamedplus
 
-" Coc config.
+colorscheme darkblue
+colorscheme gruvbox
+
 let g:coc_global_extensions = ['coc-clangd', 'coc-java', 'coc-tsserver', 'coc-html', 'coc-css', 'coc-pyright', 'coc-omnisharp', 'coc-lua']
-
-set completeopt=menu
 let g:coc_disable_startup_warning = 1
 
+" -------------------------------------
+" ---------------- Maps ---------------
+" -------------------------------------
 
-" ------------------ Functions ------------------
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+imap <script><silent><nowait><expr> <Tab> codeium#Accept()
+imap <C-]> <Cmd>call codeium#CycleCompletions(1)<CR>
+imap <C-[> <Cmd>call codeium#CycleCompletions(-1)<CR>
+imap <C-x> <Cmd>call codeium#Clear()<CR>
 
-" Clangd.
+" -------------------------------------
+" ------------- Functions -------------
+" -------------------------------------
+
 function! ApplyClangd(std)
 	let g:coc_clangd_args = ['-std=' . a:std, '--header-insertion=never', '-Wall', '-Wextra', '-Wpedantic']
 	silent! CocRestart
@@ -51,7 +63,6 @@ endfunction
 
 command! -nargs=1 ClangdStd call ApplyClangd(<f-args>)
 
-" Java.
 function! ApplyJava(ver)
 	let g:coc_java_jdtls_vmargs = ['-Djava.version=' . a:ver]
 	silent! CocRestart
@@ -65,7 +76,6 @@ endfunction
 
 command! -nargs=1 JavaStd call ApplyJava(<f-args>)
 
-" Python.
 function! ApplyPython(ver)
 	let g:coc_pyright_python_version = a:ver
 	silent! CocRestart
@@ -79,7 +89,6 @@ endfunction
 
 command! -nargs=1 PyStd call ApplyPython(<f-args>)
 
-" Dotnet.
 function! ApplyDotnet(ver)
 	let g:coc_omnisharp_dotnet_version = a:ver
 	silent! CocRestart
@@ -93,7 +102,10 @@ endfunction
 
 command! -nargs=1 DotnetStd call ApplyDotnet(<f-args>)
 
-" Autocmds.
+" ------------------------------------
+" ------------- Autocmds -------------
+" ------------------------------------
+
 autocmd BufReadPost,BufNewFile *.c,*.h,*.cpp,*.hpp call AutoClangd()
 autocmd BufReadPost,BufNewFile *.java call AutoJava()
 autocmd BufReadPost,BufNewFile *.py call AutoPython()
