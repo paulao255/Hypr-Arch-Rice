@@ -1,87 +1,105 @@
-* {
-	font-family: Monocraft;
+* 
+{
+	font-family: JetBrainsMonoNF;
 	font-size: 11px;
 	color: rgba(0, 0, 0, 1);
 }
 
-window#waybar {
+window#waybar
+{
 	background-color: rgba(255, 255, 255, 0);
 }
 
-#user {
+#user
+{
 	background-color: rgba(255, 255, 255, 1);
 	padding: 0 3px;
 }
 
-#custom-power {
+#custom-power
+{
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#workspaces {
+#workspaces
+{
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#workspaces button {
+#workspaces button
+{
 	padding: 0 3px;
 }
 
-#pulseaudio {
+#pulseaudio
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#network {
+#network
+{
 	padding: 0 10px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#tray {
+#tray
+{
 	padding: 0 4px;
 	background-color: rgba(255, 255, 255, 1);
 	color: rgba(0, 0, 0, 1);
 }
 
-#battery {
+#battery
+{
 	padding: 0 10px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#power-profiles-daemon {
+#power-profiles-daemon
+{
 	padding: 0 8px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#window {
+#window
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#cpu {
+#cpu
+{
 	padding: 0 7px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#memory {
+#memory
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#temperature {
+#temperature
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#disk {
+#disk
+{
 	padding: 0 8px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#language {
+#language
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
 
-#clock {
+#clock
+{
 	padding: 0 5px;
 	background-color: rgba(255, 255, 255, 1);
 }
