@@ -317,10 +317,10 @@ if ! [ -f /usr/bin/lua ]; then
 	clear
 fi
 
-# Auto install Luau when starts terminal:
-if ! [ -f /usr/bin/luau ]; then
-	echo Luau is not installed, starting install...
-	sudo pacman -S --needed luau
+# Auto install LuaJIT when starts terminal:
+if ! [ -f /usr/bin/luajit ]; then
+	echo LuaJIT is not installed, starting install...
+	sudo pacman -S --needed luajit
 	clear
 fi
 
