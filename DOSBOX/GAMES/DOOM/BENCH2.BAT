@@ -1,0 +1,1 @@
+ -iwad doomu.wad -benchmark file demo1 bench\normal.bnc 

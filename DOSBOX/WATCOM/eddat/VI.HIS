@@ -1,0 +1,30 @@
+20
+e MATH.LUA
+wq
+e Main.lua
+w
+wq
+e MAIN.LUA
+w
+w
+wq
+e MAIN.C
+w
+pop
+w
+w
+w
+wq
+e MAIN.C
+wq
+e MAIN.OBJ
+q!
+2
+source
+1000u
+0
+4
+C:\PROG\C\MAIN.OBJ
+C:\PROG\C\MAIN.C
+C:\PROG\C\MAIN.C
+C:\PROG\LUA\MAIN.LUA
