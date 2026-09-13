@@ -46,6 +46,27 @@ if ! [ -f /usr/share/bash-completion/bash_completion ]; then
 	clear
 fi
 
+# Auto install Node JavaScript when starts terminal:
+if ! [ -f /usr/bin/node ]; then
+	echo Node JavaScript is not installed, starting install...
+	sudo pacman -S --needed nodejs
+	clear
+fi
+
+# Auto install Node Package Manager when starts terminal:
+if ! [ -f /usr/bin/npm ]; then
+	echo Node Package Manager is not installed, starting install...
+	sudo pacman -S --needed npm
+	clear
+fi
+
+# Auto install Clang when starts terminal:
+if ! [ -f /usr/bin/clang ]; then
+	echo Clang is not installed, starting install...
+	sudo pacman -S --needed clang
+	clear
+fi
+
 # Auto install GNU C Compiler when starts terminal:
 if ! [ -f /usr/bin/gcc ]; then
 	echo GNU C Compiler is not installed, starting install...
