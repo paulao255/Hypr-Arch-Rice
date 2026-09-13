@@ -352,6 +352,13 @@ if ! [ -f "/usr/bin/luajit" ]; then
 	clear
 fi
 
+# Auto install LuaRocks when starts terminal:
+if ! [ -f "/usr/bin/luarocks" ]; then
+	echo LuaRocks is not installed, starting install...
+	sudo pacman -S --needed luarocks
+	clear
+fi
+
 # Auto install Zip when starts terminal:
 if ! [ -f "/usr/bin/zip" ]; then
 	echo Zip is not installed, starting install...
