@@ -153,6 +153,11 @@ if hl.plugin.dynamic_cursors then
 	);
 end
 
+if hl.plugin.hyprcapture then
+	hl.bind("SUPER + SHIFT + Z", hl.dsp.exec_cmd(HOME .. "/.local/bin/hyprcapture-ui --save-dir " .. HOME .. "/Pictures/Screenshots --clipboard 1 --save 0"));
+	hl.bind("SUPER + Z", hl.dsp.exec_cmd(HOME .. "/.local/bin/hyprcapture-ui --save-dir " .. HOME .. "/Pictures/Screenshots --clipboard 1 --save 1"));
+end
+
 --------------
 --- CURVES ---
 --------------
@@ -208,6 +213,8 @@ hl.bind("SUPER + D", hl.dsp.exec_cmd("discord"));
 hl.bind("SUPER + W", hl.dsp.exec_cmd("xdg-open https://web.whatsapp.com"));
 hl.bind("SUPER + minus", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -1%"), { repeating = true });
 hl.bind("SUPER + equal", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ +1%"), { repeating = true });
+hl.bind("SUPER + SHIFT + minus", hl.dsp.exec_cmd("brightnessctl set 1%-"), { repeating = true });
+hl.bind("SUPER + SHIFT + equal", hl.dsp.exec_cmd("brightnessctl set 1%+"), { repeating = true });
 hl.bind("SUPER + F1", hl.dsp.exec_cmd("hyprsunset --temperature 1000"));
 hl.bind("SUPER + SHIFT + F1", hl.dsp.exec_cmd("pkill hyprsunset"));
 hl.bind("SUPER + F2", hl.dsp.exec_cmd("pactl set-sink-mute @DEFAULT_SINK@ toggle"));
@@ -216,8 +223,8 @@ hl.bind("SUPER + SHIFT + F3", hl.dsp.exec_cmd("pkill waybar"));
 hl.bind("SUPER + F4", hl.dsp.exec_cmd("poweroff"));
 hl.bind("SUPER + SHIFT + F4", hl.dsp.exec_cmd("pkill Hyprland"));
 hl.bind("SUPER + F5", hl.dsp.exec_cmd("kitty wev"));
-hl.bind("SUPER + SHIFT + Z", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"));
-hl.bind("SUPER + Z", hl.dsp.exec_cmd("hyprshot -m output"));
+-- hl.bind("SUPER + SHIFT + Z", hl.dsp.exec_cmd("hyprshot -m output --clipboard-only"));
+-- hl.bind("SUPER + Z", hl.dsp.exec_cmd("hyprshot -m output"));
 hl.bind("SUPER + X", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"));
 hl.bind("SUPER + SHIFT + X", hl.dsp.exec_cmd("cliphist wipe"));
 hl.bind("SUPER + RETURN", hl.dsp.window.fullscreen());
@@ -249,8 +256,8 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true });
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true });
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true });
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true });
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true });
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl set 5%+"), { locked = true, repeating = true });
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl set 5%-"), { locked = true, repeating = true });
 
 -- Requires playerctl.
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true });
