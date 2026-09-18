@@ -196,8 +196,8 @@ hl.animation({ leaf = "zoomFactor",    enabled = true, speed = 1.00, bezier = "q
 --- KEYBINDINGS ---
 -------------------
 
-hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("kitty --start-as fullscreen"));
 hl.bind("SUPER + T", hl.dsp.exec_cmd("kitty"));
+hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("kitty --start-as fullscreen"));
 hl.bind("SUPER + K", hl.dsp.exec_cmd("showmethekey-gtk -AC"));
 hl.bind("SUPER + SHIFT + K", hl.dsp.exec_cmd("pkill showmethekey-gt"));
 hl.bind("SUPER + Q", hl.dsp.window.close());
@@ -207,8 +207,9 @@ hl.bind("SUPER + V", hl.dsp.window.float({ action = "toggle" }));
 hl.bind("SUPER + R", hl.dsp.exec_cmd("rofi -show drun"));
 hl.bind("SUPER + P", hl.dsp.window.pseudo());
 hl.bind("SUPER + N", hl.dsp.exec_cmd("xdg-open https://www.google.com/"));
-hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("spotify-launcher"));
+hl.bind("SUPER + SHIFT + N", hl.dsp.exec_cmd("iwgtk"));
 hl.bind("SUPER + S", hl.dsp.exec_cmd("steam"));
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("spotify-launcher"));
 hl.bind("SUPER + D", hl.dsp.exec_cmd("discord"));
 hl.bind("SUPER + W", hl.dsp.exec_cmd("xdg-open https://web.whatsapp.com"));
 hl.bind("SUPER + minus", hl.dsp.exec_cmd("pactl set-sink-volume @DEFAULT_SINK@ -1%"), { repeating = true });
