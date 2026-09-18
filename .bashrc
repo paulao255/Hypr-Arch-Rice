@@ -373,6 +373,20 @@ if ! [ -f "/usr/bin/unzip" ]; then
 	clear
 fi
 
+# Auto install CTags when starts terminal:
+if ! [ -f "/usr/bin/ctags" ]; then
+	echo CTags is not installed, starting install...
+	sudo pacman -S --needed ctags
+	clear
+fi
+
+# Auto install IWGTK when starts terminal:
+if ! [ -f "/usr/bin/iwgtk" ]; then
+	echo IWGTK is not installed, starting install...
+	yay -S --needed iwgtk
+	clear
+fi
+
 # Clear terminal after verifications set up bash completions and fast fetch:
 if [ -r "/usr/share/bash-completion/bash_completion" ]; then
 	. "/usr/share/bash-completion/bash_completion"
