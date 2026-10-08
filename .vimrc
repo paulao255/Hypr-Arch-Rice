@@ -8,6 +8,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox', {'branch': 'master'}
 Plug 'Exafunction/codeium.vim' , {'branch': 'main'}
 Plug 'preservim/tagbar', {'branch': 'master'}
+Plug 'mbbill/undotree', {'branch': 'master'}
 
 call plug#end()
 
@@ -52,6 +53,8 @@ map! <silent> <C-n> :tabnew<CR>:Explore<CR>
 map <silent> <C-n> :tabnew<CR>:Explore<CR>
 map! <silent> <C-e> :Explore<CR>
 map <silent> <C-e> :Explore<CR>
+map! <silent> <C-u> :UndotreeToggle<CR>
+map <silent> <C-u> :UndotreeToggle<CR>
 
 " -------------------------------------
 " ------------- Functions -------------
@@ -168,12 +171,12 @@ endfunction
 
 function! AutoJavaScript()
 	if expand('%:e') ==# 'js' || expand('%:e') ==# 'jsx' || expand('%:e') ==# 'ts' || expand('%:e') ==# 'tsx' || expand('%:e') ==# 'json' || expand('%:e') ==# 'html'
-		call ApplyJavaScript('ES2025')
+		call ApplyJavaScript('ES6')
 	endif
 endfunction
 
 function! JavaScriptStdComplete(ArgLead, CmdLine, CursorPos)
-	return ['ES2026', 'ES2025', 'ES2024', 'ES2023', 'ES2022', 'ES2021', 'ES2020', 'ES2019', 'ES2018', 'ES2017', 'ES2016']
+	return ['ES2026', 'ES2025', 'ES2024', 'ES2023', 'ES2022', 'ES2021', 'ES2020', 'ES2019', 'ES2018', 'ES2017', 'ES2016', 'ES2015', 'ES6']
 endfunction
 
 command! -nargs=1 -complete=customlist,JavaScriptStdComplete JavaScriptStd call ApplyJavaScript(<f-args>)
